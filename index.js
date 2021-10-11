@@ -114,11 +114,31 @@ Use the scoreboard function below to do the following:
   2. Receive the callback function `inning` from Task 2
   3. Receive a number of innings to be played
   4. Return an array where each of it's index values equals a string stating the
-  Home and Away team's scores for each inning.  Not the cummulative score.
+  Home and Away team's scores for each inning.  Not the cumulative score.
   5. If there's a tie at the end of the innings, add this message containing the score to the end of the array:  "This game will require extra innings: Away 12 - Home 12"  (see tie example below)
      If there isn't a tie, add this message to the end of the array: "Final Score: Away 13 - Home 11"  (see no tie example below)
-  
-  NO TIE example: invoking scoreboard(getInningScore,inning, 9) might return 
+*/
+
+function scoreboard(getInningScoreCb, inningCb, numInnings) {
+  const allInnings = [];
+  let homeTotal = 0;
+  let awayTotal = 0;
+  for (let i = 1; i < numInnings + 1; i++) {
+    let results = getInningScoreCb(inningCb);
+    homeTotal = homeTotal + results.Home;
+    awayTotal = awayTotal + results.Away;
+    allInnings.push(`Inning ${i}: Away ${results.Away} - Home ${results.Home}`)
+  }
+  if (homeTotal === awayTotal){
+    allInnings.push(`This game will require extra innings: Away ${awayTotal} - Home ${homeTotal}`)
+  } else {
+    allInnings.push(`Final Score: Away ${awayTotal} - Home ${homeTotal}`)
+  }
+  return allInnings;
+}
+console.log(scoreboard(getInningScore, inning, 9));
+
+/*  NO TIE example: invoking scoreboard(getInningScore,inning, 9) might return 
   an array of strings like this:
 [
   "Inning 1: Away 1 - Home 2", 
@@ -148,13 +168,6 @@ Use the scoreboard function below to do the following:
   "This game will require extra innings: Away 10 - Home 10"
 ]  
   */
-
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
-}
-
-
-
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
 function foo(){
