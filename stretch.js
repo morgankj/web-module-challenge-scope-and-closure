@@ -37,5 +37,4 @@ Cons:
 - statements must be executed in a particular order
 - not as reusable
 - can be less efficient and more complex
-
 */
