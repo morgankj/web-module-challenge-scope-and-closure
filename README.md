@@ -61,6 +61,8 @@ You will be running your tests in one terminal and debugging in the other. As yo
 Edit the `ReadMe` file with your answers to the questions below.
 
 1. In your own words, define closure (1-2 sentences).
+  Closure refers to when a function accesses something outside of it's direct block for a piece of data. This can be within a nested function (a child looking for something defined in its parent's scope, but outside of its own), or further (as in globally defined variables).
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -82,9 +84,14 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
-b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
-c. What is the lexical scope of `newRoll`? 
+  The closure occurs in the return statement - the variable "name" is not declared anywhere inside of this anonymous function.  
+  console.log(`${name} rolled a ${newRoll}`)
 
+b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+  Every time that you call 'dansRoll,' newRoll runs again to produce a new random number between 0 and 5. This number could be new or the same on subsequent calls. However, dansRoll will always assign the string "Dan" to the name parameter. So the returned console.log will always say 'Dan rolled a,' and the newRoll value may be different each time.
+
+c. What is the lexical scope of `newRoll`? 
+  The lexical scope of 'newRoll' is the anonymous function defined in the return statement.
 
 ### Task 3 - Stretch Goals
 
