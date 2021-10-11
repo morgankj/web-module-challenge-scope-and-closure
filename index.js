@@ -136,7 +136,7 @@ function scoreboard(getInningScoreCb, inningCb, numInnings) {
   }
   return allInnings;
 }
-console.log(scoreboard(getInningScore, inning, 9));
+// console.log(scoreboard(getInningScore, inning, 9));
 
 /*  NO TIE example: invoking scoreboard(getInningScore,inning, 9) might return 
   an array of strings like this:
